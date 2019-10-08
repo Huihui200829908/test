@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="misapplication-tap-highlight" content="no" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<title>Hello H5+</title>
+	<script src="jquery.js"></script>
+</head>
+<body>
+	<div style="width: 100vw">
+		<table style="width: 100vw;" id="table">
+			
+		</table>
+		<div id="page">
+			<span id="Previous">上一页</span>
+			<span id="number"></span>
+			<span id="next">下一页</span>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var pageCount = 5;
+	var pageNum = 1;
+	var data = [{
+			id:111,
+			name: "sss"
+		},{
+			id:222,
+			name: "aaa"
+		},{
+			id:333,
+			name: "aaa"
+		},{
+			id:444,
+			name: "aaa"
+		},{
+			id:555,
+			name: "aaa"
+		},{
+			id:666,
+			name: "aaa"
+		},{
+			id:777,
+			name: "aaa"
+		},{
+			id:888,
+			name: "aaa"
+		},{
+			id:999,
+			name: "aaa"
+		},{
+			id:000,
+			name: "aaa"
+		},{
+			id:001,
+			name: "aaa"
+		},{
+			id:002,
+			name: "aaa"
+		},{
+			id:003,
+			name: "aaa"
+		},{
+			id:004,
+			name: "aaa"
+		},{
+			id:005,
+			name: "aaa"
+		}]
+	
+	var pnumber = parseInt(data.length / pageCount);
+	function init(pn,d,pc){
+		var html = "";
+		for(var i=pc*pn-5;i<d.length&&i<pc*pn;i++) {
+			html += "<tr>";
+			
+				html += "<td>";
+					html += d[i].id;
+				html += "</td>";
+
+				html += "<td>";
+					html += d[i].name;
+				html += "</td>";	
+
+			html += "</tr>";
+		}
+		$("#table").html(html)
+		
+		$("#number").html("<span>"+pn+"/"+parseInt(d.length / pc)+"</span>")
+	}
+	$(document).ready(function(){
+		init(1,data,5);
+		$("#Previous").on("click",function(e){
+			if(pageNum-1<1) return false;
+			pageNum = pageNum-1;
+			init(pageNum,data,5);
+		})
+		$("#next").on("click",function(e){
+			if(pageNum+1>pnumber) return false;
+			pageNum = pageNum+1;
+			init(pageNum,data,5);
+		})
+	}); 
+</script>
+</html>
