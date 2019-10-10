@@ -1,9 +1,12 @@
-function loading(flag){
-    if(flag){
-        var html = "<div id='loading' style='width: 100vw;height: 100vh;position: absolute;background: #ffffff;display: flex;justify-content: center;z-index: 99999;align-items: center'>loading...</div>"
-        $("body div:first").append(html)
-    }else {
-        $("#loading").remove()
-    }
+function loading(tag,flag){
+    if(flag){
+        var html = "<div id='loading' style='width: 100vw;height: 100vh;position: absolute;background: #ffffff;display: flex;justify-content: center;z-index: 99999;align-items: center'>loading...</div>"
+        $(tag).append(html)
+    }else {
+        $("#loading").remove()
+    }
 
 }
+
+loading("body div:first",true)
+loading("body div:first",false)
